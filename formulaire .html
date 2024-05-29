@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Formulaire de Contact</title>
+<script>
+function checkPrecisionRequirement() {
+  var autreOption = document.getElementById('autre').checked;
+  var precisionField = document.getElementById('precision');
+  precisionField.required = autreOption;
+}
+
+function submitForm() {
+  alert("Merci pour vos réponses");
+  return false; // Pour empêcher le formulaire de s'envoyer réellement
+}
+
+function resetForm() {
+  document.getElementById("contactForm").reset();
+}
+</script>
+</head>
+<body>
+
+<h2>Formulaire de Contact</h2>
+
+<form id="contactForm" action="/submit_form" method="post" onsubmit="return submitForm()">
+  <fieldset>
+    <legend>Vos coordonnées:</legend>
+    Nom:<br>
+    <input type="text" name="nom" size="40" required>
+    <br>
+    Prénom:<br>
+    <input type="text" name="prenom" size="40" required>
+    <br>
+    Email:<br>
+    <input type="email" name="email" size="40" required>
+    <br><br>
+  </fieldset>
+
+  <fieldset>
+    <legend>Votre souhait:</legend>
+    <input type="radio" id="riche" name="souhait" value="riche" onclick="checkPrecisionRequirement()">
+    <label for="riche">Être riche</label><br>
+    <input type="radio" id="celebre" name="souhait" value="celebre" onclick="checkPrecisionRequirement()">
+    <label for="celebre">Être célèbre</label><br>
+    <input type="radio" id="intelligent" name="souhait" value="intelligent" onclick="checkPrecisionRequirement()">
+    <label for="intelligent">Être encore plus intelligent</label><br>
+    <input type="radio" id="autre" name="souhait" value="autre" onclick="checkPrecisionRequirement()">
+    <label for="autre">Autre</label><br>
+  </fieldset>
+
+  <fieldset>
+    <legend>Précision:</legend>
+    <textarea id="precision" name="precision" rows="5" cols="50"></textarea>
+  </fieldset>
+  
+  <input type="submit" value="Soumettre">
+  <button type="button" onclick="resetForm()">Actualiser</button>
+</form>
+
+
+</body>
+</html>
